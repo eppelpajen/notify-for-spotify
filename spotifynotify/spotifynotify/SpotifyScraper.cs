@@ -7,9 +7,8 @@ using System.Windows.Threading;
 
 namespace spotifynotify
 {
-    public class SpotifyScraper : INotifyPropertyChanged
+    public class SpotifyScraper
     {
-        public event PropertyChangedEventHandler PropertyChanged;
         private Timer timer;
 
         public SpotifyScraper()
@@ -42,14 +41,6 @@ namespace spotifynotify
             set
             {
                 _paused = value;
-            }
-        }
-       
-        private void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, e);
             }
         }
 
@@ -88,21 +79,19 @@ namespace spotifynotify
             }));
         }
 
-        private void SplitString(string stringTosplit, out string artist, out string song)
+        private bool SplitString(string stringTosplit, out string artist, out string song)
         {
             var splitted = stringTosplit.Split('-');
             if (splitted.Length == 0)
             {
                 artist = "";
                 song = "";
-            }
-            else
-            {
-                artist = splitted[0].Trim();
-                song = splitted[1].Trim();
+                return false;
             }
 
-            return;
+            artist = splitted[0].Trim();
+            song = splitted[1].Trim();
+            return true;
         }
 
     }
