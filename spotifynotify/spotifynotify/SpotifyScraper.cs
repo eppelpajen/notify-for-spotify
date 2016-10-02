@@ -98,8 +98,8 @@ namespace spotifynotify
             }
             else
             {
-                artist = splitted[0];
-                song = splitted[1];
+                artist = splitted[0].Trim();
+                song = splitted[1].Trim();
             }
 
             return;
