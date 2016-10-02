@@ -78,10 +78,31 @@ namespace spotifynotify
 
         private void ShowNotification()
         {
+            string artist;
+            string song;
+            SplitString(SongPlaying, out artist, out song);
+
             App.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
             {
-                new SpotifyNotification(SongPlaying).Show();
+                new SpotifyNotification(artist, song).Show();
             }));
+        }
+
+        private void SplitString(string stringTosplit, out string artist, out string song)
+        {
+            var splitted = stringTosplit.Split('-');
+            if (splitted.Length == 0)
+            {
+                artist = "";
+                song = "";
+            }
+            else
+            {
+                artist = splitted[0];
+                song = splitted[1];
+            }
+
+            return;
         }
 
     }

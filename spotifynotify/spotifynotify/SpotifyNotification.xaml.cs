@@ -8,25 +8,11 @@ namespace spotifynotify
     /// </summary>
     public partial class SpotifyNotification : Window
     {
-        private string _songPlaying;
-        public string SongPlaying
-        {
-            get
-            {
-                return _songPlaying;
-            }
-
-            set
-            {
-                _songPlaying = value;
-            }
-        }
-
-        public SpotifyNotification(string song)
+        public SpotifyNotification(string artist, string song)
         {
             InitializeComponent();
-            SongPlaying = song;
-            DataContext = this;
+            Song.Text = song;
+            Artist.Text = artist;
         }
 
         public new void Show()
@@ -38,12 +24,7 @@ namespace spotifynotify
             var corner = transform.Transform(new Point(workArea.Right, workArea.Bottom));
 
             this.Left = corner.X - this.ActualWidth - 20;
-            this.Top = corner.Y - this.ActualHeight - 15;
-        }
-
-        private void MenuItem1_Click(object sender, EventArgs e)
-        {
-            Close();
+            this.Top = corner.Y - this.ActualHeight - 10;
         }
 
         private void NotificationCompleted(object sender, EventArgs e)

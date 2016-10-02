@@ -5,14 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:spotifynotify"
         mc:Ignorable="d"
-        Title="MainWindow" Height="80" Width="250" WindowStyle="None" ShowInTaskbar="False" AllowsTransparency="True" Background="Transparent">
+        Title="MainWindow" Height="80" Width="250" WindowStyle="None" ShowInTaskbar="False" 
+        AllowsTransparency="True" Background="Transparent">
     
     <Grid x:Name="LayoutRoot">
         
         <Border Background="Black">
-            <TextBlock TextWrapping="Wrap" Margin="5" Foreground="White" VerticalAlignment="Center" 
-                       HorizontalAlignment="Center" Text="{Binding SongPlaying}">
-            </TextBlock>
+            <StackPanel Margin="5" VerticalAlignment="Center">
+                <TextBlock x:Name="Song" Foreground="White" FontSize="15" TextAlignment="Center" 
+                           TextTrimming="CharacterEllipsis">
+                </TextBlock>
+                <TextBlock x:Name="Artist" Foreground="White" FontSize="12" TextAlignment="Center" 
+                           TextTrimming="CharacterEllipsis">
+                </TextBlock>
+            </StackPanel>
         </Border>
 
         <Grid.Triggers>
