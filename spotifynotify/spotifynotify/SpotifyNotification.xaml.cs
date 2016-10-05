@@ -17,6 +17,7 @@ namespace spotifynotify
 
         public new void Show()
         {
+            this.Topmost = true;
             base.Show();
 
             var workArea = System.Windows.SystemParameters.WorkArea;
